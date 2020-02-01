@@ -4,6 +4,7 @@ public class PickAndDrop : Interactable
 {
     bool isPickedUp = false;
 
+    public bool IsPickedUp() { return isPickedUp; }
     public override void Interact(Transform otherTransform)
     {
         if (isPickedUp)
@@ -12,4 +13,5 @@ public class PickAndDrop : Interactable
             transform.parent = otherTransform;
         isPickedUp = !isPickedUp;
     }
+
 }

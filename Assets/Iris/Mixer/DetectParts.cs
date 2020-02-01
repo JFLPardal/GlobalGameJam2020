@@ -16,31 +16,35 @@ public class DetectParts : MonoBehaviour
         isBodyPartSet = false;
         isAnimalPartSet = false;
     }
-
-    private void OnCollisionEnter(Collision collision)
+    
+    protected void OnTriggerStay(Collider other)
     {
-        var transformVector = collision.gameObject.GetComponentsInChildren<Transform>();
-        var otherTransform = transformVector[1];
-        if (otherTransform.tag.ToLower().Equals("body_part"))
+        if (other.GetComponent<Part>() != null && !other.GetComponent<Part>().IsPickedUp())
         {
-            var _bodyPart = otherTransform.GetComponent<BodyPart>();
-            if (tryAddBodyPart(_bodyPart.GetType()))
+            print("la para dentro");
+            //var transformVector = other.GetComponentsInChildren<Transform>();
+            //var otherTransform = transformVector[1];
+            var otherTransform = other.GetComponentInChildren<Transform>();
+            if (otherTransform.tag.ToLower().Equals("body_part"))
             {
-                if (tryJoinParts()) resetBodyParts();
-                _bodyPart.Destroy();
+                var _bodyPart = otherTransform.GetComponent<BodyPart>();
+                if (tryAddBodyPart(_bodyPart.GetType()))
+                {
+                    if (tryJoinParts()) resetBodyParts();
+                    _bodyPart.Destroy();
+                }
             }
-        }
-        else if (otherTransform.tag.ToLower().Equals("animal_part"))
-        {
-            var _animalPart = otherTransform.GetComponent<AnimalPart>();
-            if (tryAddAnimalPart(_animalPart.GetSpecies()))
+            else if (otherTransform.tag.ToLower().Equals("animal_part"))
             {
-                if (tryJoinParts()) resetBodyParts();
-                _animalPart.Destroy();
+                var _animalPart = otherTransform.GetComponent<AnimalPart>();
+                if (tryAddAnimalPart(_animalPart.GetSpecies()))
+                {
+                    if (tryJoinParts()) resetBodyParts();
+                    _animalPart.Destroy();
+                }
             }
         }
     }
-
     private bool tryAddBodyPart(PartType _bodyPartType)
     {
         if (!isBodyPartSet)

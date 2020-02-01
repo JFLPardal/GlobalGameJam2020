@@ -34,11 +34,9 @@ public class InteractWithObjects : MonoBehaviour
             StartCoroutine(EnableInteraction());
         }
     }
-
     private IEnumerator EnableInteraction()
     {
         yield return new WaitForSecondsRealtime(1);
         canInteract = true;
     }
-
 }
