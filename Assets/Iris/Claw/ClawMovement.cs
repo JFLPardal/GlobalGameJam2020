@@ -44,10 +44,10 @@ public class ClawMovement : MonoBehaviour
         else if (IsOrderComplete(body, order) && body.HasNotDropped())
         {
             body.DropFromClaw();
-            speed = 5;
         }
         else
             CheckOutsideEdges();
+        speed = 5;
     }
 
     private void CheckOutsideEdges()
