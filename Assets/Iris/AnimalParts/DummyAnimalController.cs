@@ -17,7 +17,7 @@ public class DummyAnimalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!ap.isInMixer())
+        if (!ap.GetIsInMixer())
         {
             if (Input.GetKey(KeyCode.A))
             {

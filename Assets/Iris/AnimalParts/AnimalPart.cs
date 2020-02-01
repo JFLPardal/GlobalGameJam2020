@@ -2,42 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalPart : MonoBehaviour
+public class AnimalPart : Part
 {
-    AnimalPartDetails details;
 
     void Start()
     {
-        details = new AnimalPartDetails();
-        details.species = Species.CROCODILE;
-        details.inMixer = false;
+        details = new AnimalPartDetails() as AnimalPartDetails;
+        (details as AnimalPartDetails).species = Species.CROCODILE;
+        details.isInMixer = false;
     }
 
-    public void defineDetails(AnimalPartType _type, Species _species)
+    public virtual void DefineDetails(Species _species)
     {
         if (details != null)
         {
-            details.species = _species;
+            (details as AnimalPartDetails).species = _species;
         }
     }
 
-    public bool isInMixer()
+    public Species GetSpecies()
     {
-        return details.inMixer;
-    }
-
-    public void setInMixer(bool value)
-    {
-        details.inMixer = value;
-    }
-
-    public Species species()
-    {
-        return details.species;
-    }
-
-    public void destroy()
-    {
-        Destroy(transform.parent.gameObject);
+        return (details as AnimalPartDetails).species;
     }
 }
