@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  tags:
+  - body_part
+  - animal_part
   layers:
   - Default
   - TransparentFX
