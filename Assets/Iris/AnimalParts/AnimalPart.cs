@@ -38,6 +38,6 @@ public class AnimalPart : MonoBehaviour
 
     public void destroy()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

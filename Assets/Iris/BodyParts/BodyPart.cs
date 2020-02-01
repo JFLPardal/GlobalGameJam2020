@@ -38,6 +38,6 @@ public class BodyPart : MonoBehaviour
 
     public void destroy()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

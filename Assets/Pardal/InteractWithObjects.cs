@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class InteractWithObjects : MonoBehaviour
 {
     private BoxCollider trigger;
     private bool isInteracting = false;
+    private bool canInteract = true;
     PlayerControls controls;
-
+    
     private void Awake()
     { 
         foreach(var collider in GetComponentsInChildren<BoxCollider>())
@@ -21,17 +23,22 @@ public class InteractWithObjects : MonoBehaviour
     void OnInteract()
     {
         isInteracting = !isInteracting;
-        print("clicked");
     }
 
     private void OnTriggerStay(Collider other)
     {
-        print(isInteracting);
-        if (isInteracting && other.CompareTag("Interactable"))
+        if (isInteracting && canInteract && other.CompareTag("Interactable"))
         {
-            other.GetComponent<Interactable>().Interact();
-            other.transform.parent = transform;
-            // child other to this player
+            other.GetComponent<Interactable>().Interact(transform);
+            canInteract = false;
+            StartCoroutine(EnableInteraction());
         }
     }
+
+    private IEnumerator EnableInteraction()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        canInteract = true;
+    }
+
 }

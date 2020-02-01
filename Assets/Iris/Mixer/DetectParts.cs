@@ -19,7 +19,8 @@ public class DetectParts : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        var otherTransform = collision.transform;
+        var transformVector = collision.gameObject.GetComponentsInChildren<Transform>();
+        var otherTransform = transformVector[1];
         if (otherTransform.tag.ToLower().Equals("body_part"))
         {
             var _bodyPart = otherTransform.GetComponent<BodyPart>();

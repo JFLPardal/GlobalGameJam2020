@@ -5,5 +5,5 @@ public abstract class Interactable : MonoBehaviour
     {
         gameObject.tag = "Interactable";
     }
-    public abstract void Interact();
+    public abstract void Interact(Transform transform);
 }
