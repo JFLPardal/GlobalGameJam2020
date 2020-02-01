@@ -4,34 +4,34 @@ using UnityEngine;
 
 public static class Extensions
 {
-    public static string BodyPartTypeMapper(BodyPartType type)
+    public static string BodyPartTypeMapper(PartType type)
     {
         switch (type)
         {
-            case BodyPartType.ARMS:
+            case PartType.ARMS:
                 return "Barms_";
-            case BodyPartType.HEAD:
+            case PartType.HEAD:
                 return "Bhead_";
-            case BodyPartType.LEGS:
+            case PartType.LEGS:
                 return "Blegs_";
+            default:
+                return string.Empty;
         }
-
-        return "";
     }
 
-    public static string AnimalPartTypeMapper(BodyPartType type)
+    public static string AnimalPartTypeMapper(PartType type)
     {
         switch (type)
         {
-            case BodyPartType.ARMS:
+            case PartType.ARMS:
                 return "Aarms_";
-            case BodyPartType.HEAD:
+            case PartType.HEAD:
                 return "Ahead_";
-            case BodyPartType.LEGS:
+            case PartType.LEGS:
                 return "Alegs_";
+            default:
+                return string.Empty;
         }
-
-        return "";
     }
 
     public static string AnimalSpeciesMapper(Species species)
@@ -46,7 +46,8 @@ public static class Extensions
                 return "duck";
             case Species.CROCODILE:
                 return "crocodile";
+            default:
+                return string.Empty;
         }
-        return "";
     }
 }

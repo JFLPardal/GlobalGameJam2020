@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AnimalPartType
-{
-    LEGS,
-    ARMS,
-    HEAD,
-    UNKNOWN
-}
-
 public enum Species
 {
     DUCK,
@@ -19,8 +11,7 @@ public enum Species
     UNKNOWN
 }
 
-public class AnimalPartDetails
+public class AnimalPartDetails : PartDetails
 {
     public Species species;
-    public bool inMixer;
 }

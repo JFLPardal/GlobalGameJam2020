@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetectParts : MonoBehaviour
 {
-    private BodyPartType bodyPartType;
+    private PartType bodyPartType;
     private Species species;
 
     private bool isBodyPartSet;
@@ -23,24 +23,24 @@ public class DetectParts : MonoBehaviour
         if (otherTransform.tag.ToLower().Equals("body_part"))
         {
             var _bodyPart = otherTransform.GetComponent<BodyPart>();
-            if (tryAddBodyPart(_bodyPart.type()))
+            if (tryAddBodyPart(_bodyPart.GetType()))
             {
                 if (tryJoinParts()) resetBodyParts();
-                _bodyPart.destroy();
+                _bodyPart.Destroy();
             }
         }
         else if (otherTransform.tag.ToLower().Equals("animal_part"))
         {
             var _animalPart = otherTransform.GetComponent<AnimalPart>();
-            if (tryAddAnimalPart(_animalPart.species()))
+            if (tryAddAnimalPart(_animalPart.GetSpecies()))
             {
                 if (tryJoinParts()) resetBodyParts();
-                _animalPart.destroy();
+                _animalPart.Destroy();
             }
         }
     }
 
-    private bool tryAddBodyPart(BodyPartType _bodyPartType)
+    private bool tryAddBodyPart(PartType _bodyPartType)
     {
         if (!isBodyPartSet)
         {
@@ -74,6 +74,6 @@ public class DetectParts : MonoBehaviour
         isBodyPartSet = false;
         isAnimalPartSet = false;
         species = Species.UNKNOWN;
-        bodyPartType = BodyPartType.UNKNOWN;
+        bodyPartType = PartType.UNKNOWN;
     }
 }

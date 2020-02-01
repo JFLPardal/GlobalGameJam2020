@@ -50,14 +50,12 @@ public class Box : MonoBehaviour
             switch (boxDetails.type)
             {
                 case BoxType.BODY:
-                    GameObject bodyPart = GetBodyPart(boxDetails.boxTypeName);
-                    Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-                    Instantiate(bodyPart, newPos, new Quaternion(0, 0, 0, 0));
+                    GameObject bodyPartPrefab = GetBodyPart(boxDetails.boxTypeName);
+                    CreateNewPart(bodyPartPrefab, true);
                     break;
                 case BoxType.ANIMAL:
-                    GameObject animalPart = GetAnimalPart(boxDetails.boxTypeName);
-                    newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-                    Instantiate(animalPart, newPos, new Quaternion(0, 0, 0, 0));
+                    GameObject animalPartPrefab = GetAnimalPart(boxDetails.boxTypeName);
+                    CreateNewPart(animalPartPrefab, false);
                     break;
             }
         }
@@ -68,5 +66,21 @@ public class Box : MonoBehaviour
         isEmpty = value;
     }
 
+    private void CreateNewPart(GameObject prefab, bool bodyPart)
+    {
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+
+        GameObject newPart = Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0));
+        if (bodyPart)
+        {
+            newPart.AddComponent<BodyPart>();
+            newPart.GetComponent<BodyPart>().DefineDetails(boxDetails.part);
+        }
+        else
+        {
+            newPart.AddComponent<AnimalPart>();
+            newPart.GetComponent<AnimalPart>().DefineDetails(boxDetails.part);
+        }
+    }
 
 }

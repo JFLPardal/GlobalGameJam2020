@@ -17,7 +17,7 @@ public class DummyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!bp.isInMixer())
+        if (!bp.GetIsInMixer())
         {
             if (Input.GetKey(KeyCode.A))
             {

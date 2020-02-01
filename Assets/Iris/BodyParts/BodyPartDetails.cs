@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BodyPartType
-{
-    LEGS,
-    ARMS,
-    HEAD,
-    UNKNOWN
-}
 
-public class BodyPartDetails
+public class BodyPartDetails : PartDetails
 {
-    public BodyPartType type;
-    public bool inMixer;
+
 }
