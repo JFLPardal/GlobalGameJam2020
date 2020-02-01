@@ -45,7 +45,7 @@ public static class LoadPrefabs
 
     private static void LoadAnimalParts()
     {
-        string[] animalPartTypeNames = System.Enum.GetNames(typeof(AnimalPartType));
+        string[] animalPartTypeNames = System.Enum.GetNames(typeof(PartType));
         string[] animalSpeciesNames = System.Enum.GetNames(typeof(Species));
         foreach( var part in animalPartTypeNames)
         {
@@ -61,19 +61,18 @@ public static class LoadPrefabs
 
     private static void LoadCombinedParts()
     {
-        string[] animalPartTypeNames = System.Enum.GetNames(typeof(AnimalPartType));
+        string[] partTypeNames = System.Enum.GetNames(typeof(PartType));
         string[] animalSpeciesNames = System.Enum.GetNames(typeof(Species));
-        string[] bodyPartTypeNames = System.Enum.GetNames(typeof(BodyPartType));
 
         foreach(var species in animalSpeciesNames)
         {
             var cleanSpecies = species.ToLower();
             if (cleanSpecies != "unknown")
             {
-                for (int i = 0; i < animalPartTypeNames.Length - 1; i++)
+                for (int i = 0; i < partTypeNames.Length - 1; i++)
                 {
-                    string cleanBodyPart = "B" + bodyPartTypeNames[i].ToLower() + "_";
-                    string cleanAnimalPart = "A" + animalPartTypeNames[i].ToLower() + "_";
+                    string cleanBodyPart = "B" + partTypeNames[i].ToLower() + "_";
+                    string cleanAnimalPart = "A" + partTypeNames[i].ToLower() + "_";
                     string fullName = cleanBodyPart + cleanAnimalPart + cleanSpecies;
                     combinedParts.Add(fullName, 
                         AssetDatabase.LoadAssetAtPath(combinedPartsPath + fullName + ".prefab", typeof(GameObject)) as GameObject);

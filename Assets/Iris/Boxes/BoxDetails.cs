@@ -9,14 +9,6 @@ public enum BoxType
     ANIMAL
 }
 
-public enum PartType
-{
-    ARMS,
-    LEGS,
-    HEAD,
-    UNKNOWN
-}
-
 public class BoxDetails
 {
     public BoxType type;

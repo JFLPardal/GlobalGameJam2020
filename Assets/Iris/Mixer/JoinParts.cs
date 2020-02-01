@@ -6,10 +6,10 @@ using static LoadPrefabs;
 
 public class JoinParts : MonoBehaviour
 {
-    AnimalPartType animalPartType;
-    BodyPartType bodyPartType;
+    PartType animalPartType;
+    PartType bodyPartType;
 
-    public bool assembleParts(BodyPartType _bodyPartType, Species _species)
+    public bool assembleParts(PartType _bodyPartType, Species _species)
     {
         Debug.Log("assembleParts");
         string bodyPart = BodyPartTypeMapper(_bodyPartType);
