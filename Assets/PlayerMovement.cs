@@ -30,11 +30,6 @@ public class PlayerMovement : MonoBehaviour
         movement = input.Get<Vector2>();
     }
 
-    void OnInteract()
-    {
-        print("interact");
-    }
-
     void OnRotate(InputValue input)
     {
         rotation = new Vector3(0, input.Get<float>(), 0);
