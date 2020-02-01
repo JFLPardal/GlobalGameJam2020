@@ -6,12 +6,8 @@ public class Part : MonoBehaviour
 {
     protected PartDetails details;
 
-    public virtual void DefineDetails(PartType _type)
+    public virtual void DefineDetails()
     {
-        if (details != null)
-        {
-            details.type = _type;
-        }
     }
 
     public bool GetIsInMixer()
@@ -22,11 +18,6 @@ public class Part : MonoBehaviour
     public void SetIsInMixer(bool value)
     {
         details.isInMixer = value;
-    }
-
-    public PartType GetType()
-    {
-        return details.type;
     }
 
     public void Destroy()

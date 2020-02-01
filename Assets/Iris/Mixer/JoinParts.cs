@@ -11,17 +11,24 @@ public class JoinParts : MonoBehaviour
 
     public bool assembleParts(PartType _bodyPartType, Species _species)
     {
-        Debug.Log("assembleParts");
         string bodyPart = BodyPartTypeMapper(_bodyPartType);
         string animalPart = AnimalPartTypeMapper(_bodyPartType);
         string species = AnimalSpeciesMapper(_species);
 
-        Debug.Log(bodyPart + animalPart + species);
+        GameObject combinedPartPrefab = GetCombinedPart(bodyPart + animalPart + species);
 
-        GameObject combinedPart = GetCombinedPart(bodyPart + animalPart + species);
-        Instantiate(combinedPart, new Vector3(0, 5, 0), new Quaternion(0,0,0,0));
+        if (combinedPartPrefab == null)
+            return false;
 
-        //Instantiate()
+        CreateCombinedPart(combinedPartPrefab, _bodyPartType, _species);
+
         return true;
+    }
+
+    private void CreateCombinedPart(GameObject prefab, PartType bodyPartType, Species species)
+    {
+        var combinedPart = Instantiate(prefab, new Vector3(0, 5, 0), new Quaternion(0, 0, 0, 0));
+        combinedPart.AddComponent<CombinedPart>();
+        combinedPart.GetComponent<CombinedPart>().DefineDetails(bodyPartType, species);
     }
 }

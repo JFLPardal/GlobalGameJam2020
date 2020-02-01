@@ -9,6 +9,8 @@ public static class LoadPrefabs
     public static Dictionary<string, GameObject> animalParts = new Dictionary<string, GameObject>();
     public static Dictionary<string, GameObject> combinedParts = new Dictionary<string, GameObject>();
 
+    public static GameObject claw;
+
     private static string bodyPartsPath = "Assets/Iris/BodyParts/Prefabs/";
     private static string animalPartsPath = "Assets/Iris/AnimalParts/Prefabs/";
     private static string combinedPartsPath = "Assets/Iris/CombinedParts/Prefabs/";
@@ -18,6 +20,7 @@ public static class LoadPrefabs
         LoadBodyParts();
         LoadAnimalParts();
         LoadCombinedParts();
+        LoadClaw();
     }
 
     public static GameObject GetCombinedPart(string fullName)
@@ -27,13 +30,22 @@ public static class LoadPrefabs
 
     public static GameObject GetBodyPart(string fullName)
     {
-        Debug.Log("get body part: " + fullName);
         return bodyParts[fullName];
     }
 
     public static GameObject GetAnimalPart(string fullName)
     {
         return animalParts[fullName];
+    }
+
+    public static GameObject GetClawPrefab()
+    {
+        return claw;
+    }
+
+    private static void LoadClaw()
+    {
+        claw = AssetDatabase.LoadAssetAtPath("Assets/Iris/Claw/Prefabs/claw.prefab", typeof(GameObject)) as GameObject;
     }
 
     private static void LoadBodyParts()
