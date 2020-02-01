@@ -5,10 +5,7 @@ using UnityEngine;
 public class DetectParts : MonoBehaviour
 {
     private BodyPartType bodyPartType;
-    private AnimalPartType animalPartType;
-
-    private BodyPart bodyPart;
-    private AnimalPart animalPart;
+    private Species species;
 
     private bool isBodyPartSet;
     private bool isAnimalPartSet;
@@ -23,27 +20,22 @@ public class DetectParts : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var otherTransform = collision.transform;
-        Debug.Log("collision enter: " + otherTransform.name);
         if (otherTransform.tag.ToLower().Equals("body_part"))
         {
             var _bodyPart = otherTransform.GetComponent<BodyPart>();
             if (tryAddBodyPart(_bodyPart.type()))
             {
-                bodyPart = _bodyPart;
-                bodyPart.setInMixer(true);
-
-                if (tryJoinParts()) destroyParts();
+                if (tryJoinParts()) resetBodyParts();
+                _bodyPart.destroy();
             }
         }
         else if (otherTransform.tag.ToLower().Equals("animal_part"))
         {
             var _animalPart = otherTransform.GetComponent<AnimalPart>();
-            if (tryAddAnimalPart(_animalPart.type()))
+            if (tryAddAnimalPart(_animalPart.species()))
             {
-                animalPart = _animalPart;
-                animalPart.setInMixer(true);
-
-                if (tryJoinParts()) destroyParts();
+                if (tryJoinParts()) resetBodyParts();
+                _animalPart.destroy();
             }
         }
     }
@@ -58,12 +50,12 @@ public class DetectParts : MonoBehaviour
         }
         return false;
     }
-    private bool tryAddAnimalPart(AnimalPartType _animalPartType)
+    private bool tryAddAnimalPart(Species _species)
     {
         if (!isAnimalPartSet)
         {
             isAnimalPartSet = true;
-            animalPartType = _animalPartType;
+            species = _species;
             return true;
         }
         return false;
@@ -71,23 +63,17 @@ public class DetectParts : MonoBehaviour
 
     private bool tryJoinParts()
     {
-        Debug.Log("tryJoinParts");
         if (isAnimalPartSet && isBodyPartSet)
-            return GetComponent<JoinParts>().assembleParts(bodyPartType, animalPartType);
+            return GetComponent<JoinParts>().assembleParts(bodyPartType, species);
 
         return false;
-    }
-
-    private void destroyParts()
-    {
-        animalPart.destroy();
-        bodyPart.destroy();
-        resetBodyParts();
     }
 
     private void resetBodyParts()
     {
         isBodyPartSet = false;
         isAnimalPartSet = false;
+        species = Species.UNKNOWN;
+        bodyPartType = BodyPartType.UNKNOWN;
     }
 }

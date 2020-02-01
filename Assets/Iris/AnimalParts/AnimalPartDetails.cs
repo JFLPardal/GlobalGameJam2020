@@ -6,19 +6,21 @@ public enum AnimalPartType
 {
     LEGS,
     ARMS,
-    HEAD
+    HEAD,
+    UNKNOWN
 }
 
 public enum Species
 {
-    CHICKEN,
+    DUCK,
     FISH,
-    PARROT
+    REDPANDA,
+    CROCODILE,
+    UNKNOWN
 }
 
 public class AnimalPartDetails
 {
-    public AnimalPartType type;
     public Species species;
     public bool inMixer;
 }

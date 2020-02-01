@@ -6,7 +6,8 @@ public enum BodyPartType
 {
     LEGS,
     ARMS,
-    HEAD
+    HEAD,
+    UNKNOWN
 }
 
 public class BodyPartDetails

@@ -9,8 +9,7 @@ public class AnimalPart : MonoBehaviour
     void Start()
     {
         details = new AnimalPartDetails();
-        details.type = AnimalPartType.ARMS;
-        details.species = Species.CHICKEN;
+        details.species = Species.CROCODILE;
         details.inMixer = false;
     }
 
@@ -19,7 +18,6 @@ public class AnimalPart : MonoBehaviour
         if (details != null)
         {
             details.species = _species;
-            details.type = _type;
         }
     }
 
@@ -33,9 +31,9 @@ public class AnimalPart : MonoBehaviour
         details.inMixer = value;
     }
 
-    public AnimalPartType type()
+    public Species species()
     {
-        return details.type;
+        return details.species;
     }
 
     public void destroy()
