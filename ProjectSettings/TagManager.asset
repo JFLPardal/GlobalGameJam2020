@@ -9,6 +9,9 @@ TagManager:
   - animal_part
   - body
   - order
+  - legs
+  - arms
+  - head
   layers:
   - Default
   - TransparentFX
