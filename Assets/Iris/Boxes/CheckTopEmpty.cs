@@ -6,7 +6,6 @@ public class CheckTopEmpty : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("enter");
         if (collision.transform.tag.ToLower().Equals("body_part") 
             || collision.transform.tag.ToLower().Equals("animal_part")
             || collision.transform.tag.ToLower().Equals("combined_part"))

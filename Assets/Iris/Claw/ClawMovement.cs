@@ -10,8 +10,8 @@ public class ClawMovement : MonoBehaviour
     private Order order;
     private float speed;
     private bool movingLeft = false;
-    private float maxXPosition = 6;
-    private float maxOutsideXPosition = 10;
+    private float maxPosition = 25;
+    private float maxOutsidePosition = 30;
 
     public bool switchDirections = false;
 
@@ -25,14 +25,14 @@ public class ClawMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 tempVect = Vector3.right;
+        Vector3 tempVect = Vector3.back;
         if (movingLeft)
-            tempVect = Vector3.left;
+            tempVect = Vector3.forward;
 
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         rigidbody.MovePosition(transform.position + tempVect);
 
-        if (movingLeft && transform.position.x <= -maxXPosition || !movingLeft && transform.position.x >= maxXPosition)
+        if (movingLeft && transform.position.z <= -maxPosition || !movingLeft && transform.position.z >= maxPosition)
             CheckOnEdges();
 
     }
@@ -52,8 +52,8 @@ public class ClawMovement : MonoBehaviour
 
     private void CheckOutsideEdges()
     {
-        if (movingLeft && transform.position.x <= -maxOutsideXPosition
-            || !movingLeft && transform.position.x >= maxOutsideXPosition)
+        if (movingLeft && transform.position.z <= -maxOutsidePosition
+            || !movingLeft && transform.position.z >= maxOutsidePosition)
         {
             Destroy(gameObject);
         }

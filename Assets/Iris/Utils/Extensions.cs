@@ -66,20 +66,17 @@ public static class Extensions
         var species = AnimalSpeciesMapper(pair.species);
         var bodyType = BodyPartTypeMapper(pair.type);
         var animalType = AnimalPartTypeMapper(pair.type);
-        Debug.Log("mapper: " + bodyType + animalType + species);
         return bodyType + animalType + species;
     }
 
     public static Species GetRandomSpecies()
     {
         var s = (Species)UnityEngine.Random.Range(0, Enum.GetValues(typeof(Species)).Length - 1);
-        Debug.Log("random species: " + s);
         return s;
     }
     public static PartType GetRandomPart()
     {
         var s = (PartType) UnityEngine.Random.Range(0, Enum.GetValues(typeof(PartType)).Length - 1);
-        Debug.Log("random type: " + s);
         return s;
     }
 
@@ -99,7 +96,6 @@ public static class Extensions
     {
         foreach(var pair in list)
         {
-            Debug.Log(pair.type);
             if (pair.type == PartType.LEGS)
                 return pair;
         }

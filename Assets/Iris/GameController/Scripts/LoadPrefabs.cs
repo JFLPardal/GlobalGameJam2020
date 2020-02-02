@@ -43,6 +43,7 @@ public static class LoadPrefabs
 
     public static GameObject GetClawPrefab()
     {
+        Debug.Log("claw: " +claw);
         return claw;
     }
 
@@ -70,18 +71,14 @@ public static class LoadPrefabs
 
     private static void LoadAnimalParts()
     {
-        string[] animalPartTypeNames = System.Enum.GetNames(typeof(PartType));
         string[] animalSpeciesNames = System.Enum.GetNames(typeof(Species));
-        foreach( var part in animalPartTypeNames)
+        foreach (var species in animalSpeciesNames)
         {
-            string cleanBodyPart = "A" + part.ToLower() + "_";
-            foreach(var species in animalSpeciesNames)
-            {
-                string fullName = cleanBodyPart + species.ToLower();
-                animalParts.Add(fullName, 
-                    AssetDatabase.LoadAssetAtPath(animalPartsPath + fullName + ".prefab", typeof(GameObject)) as GameObject);
-            }
+            string fullName = species.ToLower();
+            animalParts.Add(fullName,
+                AssetDatabase.LoadAssetAtPath(animalPartsPath + fullName + ".prefab", typeof(GameObject)) as GameObject);
         }
+
     }
 
     private static void LoadCombinedParts()
@@ -89,7 +86,7 @@ public static class LoadPrefabs
         string[] partTypeNames = System.Enum.GetNames(typeof(PartType));
         string[] animalSpeciesNames = System.Enum.GetNames(typeof(Species));
 
-        foreach(var species in animalSpeciesNames)
+        foreach (var species in animalSpeciesNames)
         {
             var cleanSpecies = species.ToLower();
             if (cleanSpecies != "unknown")
@@ -99,7 +96,7 @@ public static class LoadPrefabs
                     string cleanBodyPart = "B" + partTypeNames[i].ToLower() + "_";
                     string cleanAnimalPart = "A" + partTypeNames[i].ToLower() + "_";
                     string fullName = cleanBodyPart + cleanAnimalPart + cleanSpecies;
-                    combinedParts.Add(fullName, 
+                    combinedParts.Add(fullName,
                         AssetDatabase.LoadAssetAtPath(combinedPartsPath + fullName + ".prefab", typeof(GameObject)) as GameObject);
                 }
             }

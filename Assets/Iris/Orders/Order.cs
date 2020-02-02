@@ -33,8 +33,7 @@ public class Order : MonoBehaviour
             var newPart = new PartSpeciesStruct((PartType)i, GetRandomSpecies());
             expectedParts.Add(newPart);
         }
-        print(expectedParts.Count);
-        CreateOrderMiniBody();
+        //CreateOrderMiniBody();
     }
 
     private void CreateOrderMiniBody()

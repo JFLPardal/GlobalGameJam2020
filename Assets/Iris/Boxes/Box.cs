@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static LoadPrefabs;
+using static Extensions;
 
 public class Box : Interactable
 {
@@ -40,12 +41,11 @@ public class Box : Interactable
             finalNamePart = _part.ToString().ToLower();
 
         boxDetails.boxTypeName = _type.ToString().Substring(0, 1) + finalNamePart;
-
-        Debug.Log("Box: " + boxDetails.boxTypeName);
     }
 
     public override void Interact(Transform transform)
     {
+        print("asfasf");
         if (isEmpty)
         {
             switch (boxDetails.type)
@@ -55,7 +55,7 @@ public class Box : Interactable
                     CreateNewPart(bodyPartPrefab, true);
                     break;
                 case BoxType.ANIMAL:
-                    GameObject animalPartPrefab = GetAnimalPart(boxDetails.boxTypeName);
+                    GameObject animalPartPrefab = GetAnimalPart(AnimalSpeciesMapper(boxDetails.species));
                     CreateNewPart(animalPartPrefab, false);
                     break;
             }
@@ -69,19 +69,12 @@ public class Box : Interactable
 
     private void CreateNewPart(GameObject prefab, bool bodyPart)
     {
-        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1);
-
-        GameObject newPart = Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0));
-        if (bodyPart)
-        {
-            newPart.AddComponent<BodyPart>();
-            newPart.GetComponent<BodyPart>().DefineDetails(boxDetails.part);
-        }
+        Vector3 newPos;
+        if (boxDetails.type == BoxType.ANIMAL)
+            newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1);
         else
-        {
-            newPart.AddComponent<AnimalPart>();
-            newPart.GetComponent<AnimalPart>().DefineDetails(boxDetails.species);
-        }
+            newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3);
+        Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0));
     }
 
 }

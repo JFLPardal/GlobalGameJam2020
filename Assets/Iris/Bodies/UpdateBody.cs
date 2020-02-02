@@ -25,12 +25,9 @@ public class UpdateBody : MonoBehaviour
     private void UpdateLegs(CombinedPart legs)
     {
         string fullName = CombinedPartNameMapper(legs);
-        print(fullName);
         var prefab = GetCombinedPart(fullName);
 
         var childLegs = GetBodyPart("legs");
-        print("prefab: " + prefab);
-        print("newLegs: " + childLegs);
 
         var newLegs = Instantiate(prefab, childLegs.transform.position, childLegs.transform.rotation);
         newLegs.transform.parent = transform;
@@ -73,7 +70,6 @@ public class UpdateBody : MonoBehaviour
         var children = GetComponentsInChildren<Transform>();
         foreach(var child in children)
         {
-            print("aa: " + child.tag);
             if (child.tag.ToLower() == type)
                 return child.gameObject;
         }

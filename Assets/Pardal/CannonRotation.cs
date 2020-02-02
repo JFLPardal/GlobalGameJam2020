@@ -38,9 +38,7 @@ public class CannonRotation : Interactable
     {
         if(partBeingHeld != null)
         {
-            print("shooting " + partBeingHeld.name + " parent " + transform.parent.name);
             partBeingHeld.GetComponent<Rigidbody>().velocity = CannonTip.transform.forward * shootingSpeed;
-            print(partBeingHeld.GetComponent<Rigidbody>().velocity);
             partTrigger.enabled = false;
             partBeingHeld.transform.parent = null;           
             StartCoroutine(ReactivatePartsTrigger());
@@ -57,14 +55,12 @@ public class CannonRotation : Interactable
     {
         outsideTransform.GetComponent<PlayerMovement>().ChangeMoveAbility();
         transform.parent = outsideTransform;
-        print("mounting");
 
     }
     private void UnmountPlayer(Transform outsideTransform)
     {
         outsideTransform.GetComponent<PlayerMovement>().ChangeMoveAbility();
         transform.parent = null;
-        print("unmounting");
     }
     protected void OnTriggerStay(Collider other)
     {
