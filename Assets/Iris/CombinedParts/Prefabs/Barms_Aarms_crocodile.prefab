@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 1800532848670692044, guid: 015239ea543f57946a650e16d84fb35c,
         type: 3}
       propertyPath: m_Name
-      value: Barms_Aarms_crocodile
+      value: Barms_Aarms_crocodile_child
       objectReference: {fileID: 0}
     - target: {fileID: 7247259218538979476, guid: 015239ea543f57946a650e16d84fb35c,
         type: 3}

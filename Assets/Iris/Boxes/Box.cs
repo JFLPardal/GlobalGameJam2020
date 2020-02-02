@@ -69,7 +69,7 @@ public class Box : Interactable
 
     private void CreateNewPart(GameObject prefab, bool bodyPart)
     {
-        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1);
 
         GameObject newPart = Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0));
         if (bodyPart)
