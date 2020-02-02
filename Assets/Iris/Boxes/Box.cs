@@ -45,7 +45,6 @@ public class Box : Interactable
 
     public override void Interact(Transform transform)
     {
-        print("asfasf");
         if (isEmpty)
         {
             switch (boxDetails.type)

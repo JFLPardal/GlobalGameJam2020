@@ -13,19 +13,19 @@ public class CombinedPart : Part
             (details as CombinedPartDetails).species = _species;
         }
 
-        print("set: " +(details as CombinedPartDetails).species);
-        print("set: " + (details as CombinedPartDetails).type);
+        //print("set: " +(details as CombinedPartDetails).species);
+        //print("set: " + (details as CombinedPartDetails).type);
     }
 
     public PartType GetType()
     {
-        print("get: " + (details as CombinedPartDetails).type);
+       // print("get: " + (details as CombinedPartDetails).type);
         return (details as CombinedPartDetails).type;
     }
 
     public Species GetSpecies()
     {
-        print("get: " + (details as CombinedPartDetails).species);
+        //print("get: " + (details as CombinedPartDetails).species);
         return (details as CombinedPartDetails).species;
     }
 }
