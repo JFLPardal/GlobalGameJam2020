@@ -46,13 +46,21 @@ public class Order : MonoBehaviour
 
         var pos = transform.position;
 
-        GameObject legs = Instantiate(legsPrefab, new Vector3(pos.x, pos.y, pos.z), new Quaternion(0,0,0,0));
-        GameObject arms = Instantiate(armsPrefab, new Vector3(pos.x, pos.y + 1, pos.z), new Quaternion(0, 0, 0, 0));
-        GameObject head = Instantiate(headPrefab, new Vector3(pos.x, pos.y + 2, pos.z), new Quaternion(0, 0, 0, 0));
+        GameObject legs = Instantiate(legsPrefab, new Vector3(pos.x, pos.y, pos.z - 1), new Quaternion(0,0,0,0));
+        GameObject arms = Instantiate(armsPrefab, new Vector3(pos.x, pos.y + 1, pos.z - 1), new Quaternion(0, 0, 0, 0));
+        GameObject head = Instantiate(headPrefab, new Vector3(pos.x, pos.y + 2, pos.z - 1), new Quaternion(0, 0, 0, 0));
 
         legs.transform.parent = transform;
         arms.transform.parent = transform;
         head.transform.parent = transform;
+
+        legs.GetComponent<Rigidbody>().useGravity = false;
+        legs.GetComponent<Rigidbody>().isKinematic = true;
+        arms.GetComponent<Rigidbody>().useGravity = false;
+        arms.GetComponent<Rigidbody>().isKinematic = true;
+        head.GetComponent<Rigidbody>().useGravity = false;
+        head.GetComponent<Rigidbody>().isKinematic = true;
+
 
     }
 
