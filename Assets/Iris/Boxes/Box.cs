@@ -36,7 +36,6 @@ public class Box : Interactable
 
     public override void Interact(Transform transform)
     {
-        Debug.Log("GetPart");
         if (isEmpty)
         {
             switch (boxDetails.type)

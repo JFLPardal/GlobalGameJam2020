@@ -4,6 +4,7 @@ using UnityEngine;
 public class CannonRotation : Interactable
 {
     [SerializeField] Transform CannonTip;
+    [SerializeField] int shootingSpeed = 50;
     private bool isBeingUsed = false;
     private bool isHoldingPart = false;
     private GameObject partBeingHeld;
@@ -16,7 +17,6 @@ public class CannonRotation : Interactable
             if(collider.isTrigger)
             {
                 partTrigger = collider;
-                print("fine");
             }
         }
     }
@@ -38,8 +38,8 @@ public class CannonRotation : Interactable
     {
         if(partBeingHeld != null)
         {
-            print("shooting " + partBeingHeld.name);
-            partBeingHeld.GetComponent<Rigidbody>().velocity = - transform.parent.forward * 100;
+            print("shooting " + partBeingHeld.name + " parent " + transform.parent.name);
+            partBeingHeld.GetComponent<Rigidbody>().velocity = CannonTip.transform.forward * shootingSpeed;
             print(partBeingHeld.GetComponent<Rigidbody>().velocity);
             partTrigger.enabled = false;
             partBeingHeld.transform.parent = null;           
@@ -49,7 +49,7 @@ public class CannonRotation : Interactable
     }
     private IEnumerator ReactivatePartsTrigger()
     {
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSecondsRealtime(1f);
         partTrigger.enabled = true;
     }
 

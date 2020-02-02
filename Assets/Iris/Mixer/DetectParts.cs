@@ -23,13 +23,9 @@ public class DetectParts : MonoBehaviour
     {
         if (other.GetComponent<Part>() != null && !other.GetComponent<Part>().IsPickedUp())
         {
-            print("la para dentro");
-            //var transformVector = other.GetComponentsInChildren<Transform>();
-            //var otherTransform = transformVector[1];
             var otherTransform = other.GetComponentInChildren<Transform>();
             if (otherTransform.tag.ToLower().Equals("body_part"))
             {
-                print("hmmfasm");
                 var _bodyPart = otherTransform.GetComponent<BodyPart>();
                 if(tryAddBodyPart(_bodyPart.GetType()))
                 { 
@@ -75,7 +71,6 @@ public class DetectParts : MonoBehaviour
 
     private bool tryJoinParts()
     {
-        print("joining");
         if (isAnimalPartSet && isBodyPartSet)
             return GetComponent<JoinParts>().assembleParts(bodyPartType, species);
 

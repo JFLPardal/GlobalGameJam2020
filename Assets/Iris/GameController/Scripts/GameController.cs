@@ -6,6 +6,7 @@ using static OrderCompletion;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] Vector3 initialPositionToSpawn = new Vector3(-5, 3, 8);
     private float clawGenerationInterval = 10;
 
     void Start()
@@ -16,6 +17,6 @@ public class GameController : MonoBehaviour
 
     private void CreateClaw()
     {
-        Instantiate(GetClawPrefab(), new Vector3(-5, 3, 8), new Quaternion(0, 0, 0, 0));
+        Instantiate(GetClawPrefab(), initialPositionToSpawn, new Quaternion(0, 0, 0, 0));
     }
 }

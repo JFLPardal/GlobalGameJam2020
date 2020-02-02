@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CombinedPart : Part
 {
+    private void Start()
+    {
+        details = new CombinedPartDetails();
+    }
     public virtual void DefineDetails(PartType _type, Species _species)
     {
         if (details != null)
