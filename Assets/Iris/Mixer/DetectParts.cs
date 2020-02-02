@@ -29,17 +29,26 @@ public class DetectParts : MonoBehaviour
             var otherTransform = other.GetComponentInChildren<Transform>();
             if (otherTransform.tag.ToLower().Equals("body_part"))
             {
-                if (tryJoinParts()) resetBodyParts();
-                smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
-                _bodyPart.Destroy();
-                Invoke("DestroySmoke", 1f);
+                print("hmmfasm");
+                var _bodyPart = otherTransform.GetComponent<BodyPart>();
+                if(tryAddBodyPart(_bodyPart.GetType()))
+                { 
+                    if (tryJoinParts()) resetBodyParts();
+                    smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
+                    _bodyPart.Destroy();
+                    Invoke("DestroySmoke", 1f);
+                }
             }
             else if (otherTransform.tag.ToLower().Equals("animal_part"))
             {
-                if (tryJoinParts()) resetBodyParts();
-                smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
-                _animalPart.Destroy();
-                Invoke("DestroySmoke", 1f);
+                var _animalPart = otherTransform.GetComponent<AnimalPart>();
+                if (tryAddAnimalPart(_animalPart.GetSpecies()))
+                {
+                    if (tryJoinParts()) resetBodyParts();
+                    smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
+                    _animalPart.Destroy();
+                    Invoke("DestroySmoke", 1f);
+                }
             }
         }
     }
@@ -66,6 +75,7 @@ public class DetectParts : MonoBehaviour
 
     private bool tryJoinParts()
     {
+        print("joining");
         if (isAnimalPartSet && isBodyPartSet)
             return GetComponent<JoinParts>().assembleParts(bodyPartType, species);
 

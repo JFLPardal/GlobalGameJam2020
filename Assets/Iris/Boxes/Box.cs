@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static LoadPrefabs;
 
-public class Box : MonoBehaviour
+public class Box : Interactable
 {
     BoxDetails boxDetails;
     bool isEmpty;
@@ -17,15 +17,7 @@ public class Box : MonoBehaviour
         boxDetails.boxTypeName = "Barms";
         isEmpty = true;
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            GetPart();
-        }
-    }
-
+    
     public void DefineBoxDetails(BoxType _type, PartType _part, Species _species = Species.UNKNOWN)
     {
         boxDetails.type = _type;
@@ -42,7 +34,7 @@ public class Box : MonoBehaviour
         Debug.Log("Box: " + boxDetails.boxTypeName);
     }
 
-    public void GetPart()
+    public override void Interact(Transform transform)
     {
         Debug.Log("GetPart");
         if (isEmpty)
