@@ -6,6 +6,8 @@ using static LoadPrefabs;
 
 public class JoinParts : MonoBehaviour
 {
+    [SerializeField] Vector2 finalPartOffset;
+
     PartType animalPartType;
     PartType bodyPartType;
 
@@ -19,7 +21,8 @@ public class JoinParts : MonoBehaviour
         Debug.Log(bodyPart + animalPart + species);
 
         GameObject combinedPart = GetCombinedPart(bodyPart + animalPart + species);
-        Instantiate(combinedPart, new Vector3(0, 5, 0), new Quaternion(0,0,0,0));
+
+        Instantiate(combinedPart, transform.position + new Vector3(finalPartOffset.x, 0, finalPartOffset.y), new Quaternion(0,0,0,0));
 
         //Instantiate()
         return true;

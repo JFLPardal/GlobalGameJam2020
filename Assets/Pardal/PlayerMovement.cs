@@ -7,10 +7,16 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;
     private Vector3 rotation;
+    private bool canMove = true;
+
+    public void ChangeMoveAbility() { canMove = !canMove; }
 
     void Update()
     {
-        Move();
+        if(canMove)
+        {
+            Move();
+        }
         Rotate();
     }
 
@@ -22,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Rotate()
     {
-        //Vector3 newRotation = new Vector3(0, rotation, 0);
         transform.Rotate(rotation, Space.World);
     }
     void OnMove(InputValue input)
