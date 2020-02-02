@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static LoadPrefabs;
 
-public class Box : MonoBehaviour
+public class Box : Interactable
 {
     BoxDetails boxDetails;
     bool isEmpty;
@@ -27,8 +27,7 @@ public class Box : MonoBehaviour
 
         isEmpty = true;
     }
-
-
+    
     public void DefineBoxDetails(BoxType _type, PartType _part, Species _species = Species.UNKNOWN)
     {
         boxDetails.type = _type;
@@ -45,9 +44,8 @@ public class Box : MonoBehaviour
         Debug.Log("Box: " + boxDetails.boxTypeName);
     }
 
-    public void GetPart()
+    public override void Interact(Transform transform)
     {
-        Debug.Log("GetPart");
         if (isEmpty)
         {
             switch (boxDetails.type)
@@ -71,7 +69,7 @@ public class Box : MonoBehaviour
 
     private void CreateNewPart(GameObject prefab, bool bodyPart)
     {
-        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1);
 
         GameObject newPart = Instantiate(prefab, newPos, new Quaternion(0, 0, 0, 0));
         if (bodyPart)

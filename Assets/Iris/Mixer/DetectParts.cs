@@ -18,34 +18,36 @@ public class DetectParts : MonoBehaviour
         isBodyPartSet = false;
         isAnimalPartSet = false;
     }
-
-    private void OnCollisionEnter(Collision collision)
+    
+    protected void OnTriggerStay(Collider other)
     {
-        var otherTransform = collision.transform;
-        if (otherTransform.tag.ToLower().Equals("body_part"))
+        if (other.GetComponent<Part>() != null && !other.GetComponent<Part>().IsPickedUp())
         {
-            var _bodyPart = otherTransform.GetComponent<BodyPart>();
-            if (tryAddBodyPart(_bodyPart.GetType()))
+            var otherTransform = other.GetComponentInChildren<Transform>();
+            if (otherTransform.tag.ToLower().Equals("body_part"))
             {
-                if (tryJoinParts()) resetBodyParts();
-                smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
-                _bodyPart.Destroy();
-                Invoke("DestroySmoke", 1f);
+                var _bodyPart = otherTransform.GetComponent<BodyPart>();
+                if(tryAddBodyPart(_bodyPart.GetType()))
+                { 
+                    if (tryJoinParts()) resetBodyParts();
+                    smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
+                    _bodyPart.Destroy();
+                    Invoke("DestroySmoke", 1f);
+                }
             }
-        }
-        else if (otherTransform.tag.ToLower().Equals("animal_part"))
-        {
-            var _animalPart = otherTransform.GetComponent<AnimalPart>();
-            if (tryAddAnimalPart(_animalPart.GetSpecies()))
+            else if (otherTransform.tag.ToLower().Equals("animal_part"))
             {
-                if (tryJoinParts()) resetBodyParts();
-                smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
-                _animalPart.Destroy();
-                Invoke("DestroySmoke", 1f);
+                var _animalPart = otherTransform.GetComponent<AnimalPart>();
+                if (tryAddAnimalPart(_animalPart.GetSpecies()))
+                {
+                    if (tryJoinParts()) resetBodyParts();
+                    smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
+                    _animalPart.Destroy();
+                    Invoke("DestroySmoke", 1f);
+                }
             }
         }
     }
-
     private bool tryAddBodyPart(PartType _bodyPartType)
     {
         if (!isBodyPartSet)

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CombinedPart : Part
 {
+    private void Start()
+    {
+        details = new CombinedPartDetails();
+        (details as CombinedPartDetails).species = Species.REDPANDA;
+    }
     public virtual void DefineDetails(PartType _type, Species _species)
     {
         if (details != null)

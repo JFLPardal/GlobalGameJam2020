@@ -27,6 +27,8 @@ public class Body : MonoBehaviour
             if (currentParts[i].type == combinedPart.GetType())
             {
                 currentParts[i].species = combinedPart.GetSpecies();
+                print("updated bp");
+                GetComponent<UpdateBody>().UpdateBodyPart(combinedPart);
                 break;
             }
         }
@@ -39,6 +41,17 @@ public class Body : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = false;
         hasNotDropped = false;
         Invoke("Destroy", 2f);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        var combinedPart = other.GetComponentInChildren<CombinedPart>();
+        if (other.CompareTag("Interactable") && combinedPart != null)
+        {
+            UpdateBodyPart(combinedPart);
+            combinedPart.Destroy();
+            print("destroyed");
+        }
     }
 
     public bool HasNotDropped()
