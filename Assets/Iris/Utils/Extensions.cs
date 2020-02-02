@@ -52,6 +52,15 @@ public static class Extensions
         }
     }
 
+    public static string CombinedPartNameMapper(CombinedPart combinedPart)
+    {
+        var species = AnimalSpeciesMapper(combinedPart.GetSpecies());
+        var bodyType = BodyPartTypeMapper(combinedPart.GetType());
+        var animalType = AnimalPartTypeMapper(combinedPart.GetType());
+
+        return bodyType + animalType + species;       
+    }
+
     public static Species GetRandomSpecies()
     {
         return (Species) UnityEngine.Random.Range(0, Enum.GetValues(typeof(Species)).Length - 1);
