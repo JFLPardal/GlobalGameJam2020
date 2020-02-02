@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Body : MonoBehaviour
+{
+    public List<PartSpeciesStruct> currentParts = new List<PartSpeciesStruct>();
+
+    private bool hasNotDropped;
+
+    void Start()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            var part = new PartSpeciesStruct((PartType)i, Species.UNKNOWN);
+            currentParts.Add(part);
+        }
+
+        hasNotDropped = true;
+    }
+
+    public void UpdateBodyPart(CombinedPart combinedPart)
+    {
+        for (int i = currentParts.Count - 1; i >= 0; i--)
+        {
+            if (currentParts[i].type == combinedPart.GetType())
+            {
+                currentParts[i].species = combinedPart.GetSpecies();
+                break;
+            }
+        }
+    }
+
+    public void DropFromClaw()
+    {
+        gameObject.transform.parent = null;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+        hasNotDropped = false;
+        Invoke("Destroy", 2f);
+    }
+
+    public bool HasNotDropped()
+    {
+        return hasNotDropped;
+    }
+
+    private void Destroy()
+    {
+        Destroy(gameObject);
+    }
+
+}

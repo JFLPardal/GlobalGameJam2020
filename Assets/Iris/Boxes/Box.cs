@@ -79,7 +79,7 @@ public class Box : MonoBehaviour
         else
         {
             newPart.AddComponent<AnimalPart>();
-            newPart.GetComponent<AnimalPart>().DefineDetails(boxDetails.part);
+            newPart.GetComponent<AnimalPart>().DefineDetails(boxDetails.species);
         }
     }
 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - body_part
   - animal_part
+  - body
+  - order
   layers:
   - Default
   - TransparentFX
