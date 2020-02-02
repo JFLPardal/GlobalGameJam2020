@@ -27,7 +27,6 @@ public class JoinParts : MonoBehaviour
 
     private void CreateCombinedPart(GameObject prefab, PartType bodyPartType, Species species)
     {
-        print("sadfgbnb");
         var combinedPart = Instantiate(prefab, transform.position + new Vector3(finalPartOffset.x, 0, finalPartOffset.y), new Quaternion(0, 0, 0, 0));
         combinedPart.GetComponentInChildren<CombinedPart>().DefineDetails(bodyPartType, species);
         smoke = Instantiate(GetSmokePrefab(), new Vector3(0, 5, -3), new Quaternion(0, 0, 0, 0));

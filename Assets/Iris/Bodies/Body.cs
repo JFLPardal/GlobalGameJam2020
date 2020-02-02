@@ -41,6 +41,14 @@ public class Body : MonoBehaviour
         Invoke("Destroy", 2f);
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Interactable") && other.GetComponentInChildren<CombinedPart>())
+        {
+            UpdateBodyPart(other.GetComponentInChildren<CombinedPart>());
+        }
+    }
+
     public bool HasNotDropped()
     {
         return hasNotDropped;

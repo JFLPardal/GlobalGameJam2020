@@ -16,6 +16,6 @@ public class GameController : MonoBehaviour
 
     private void CreateClaw()
     {
-        Instantiate(GetClawPrefab(), new Vector3(-5, 5, 8), new Quaternion(0, 0, 0, 0));
+        Instantiate(GetClawPrefab(), new Vector3(-5, 3, 8), new Quaternion(0, 0, 0, 0));
     }
 }

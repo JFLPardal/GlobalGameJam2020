@@ -36,7 +36,6 @@ public class CannonRotation : Interactable
 
     private void ShootPart()
     {
-        print(partBeingHeld.name);
         if(partBeingHeld != null)
         {
             print("shooting " + partBeingHeld.name);
