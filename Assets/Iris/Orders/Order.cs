@@ -23,9 +23,6 @@ public class Order : MonoBehaviour
     void Start()
     {
         GenerateRandomParts();
-        /*expectedParts.Add(new PartSpeciesStruct(PartType.ARMS, Species.UNKNOWN));
-        expectedParts.Add(new PartSpeciesStruct(PartType.LEGS, Species.UNKNOWN));
-        expectedParts.Add(new PartSpeciesStruct(PartType.HEAD, Species.UNKNOWN));*/
     }
 
     private void GenerateRandomParts()
