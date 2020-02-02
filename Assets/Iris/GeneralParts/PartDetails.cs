@@ -12,6 +12,5 @@ public enum PartType
 
 public class PartDetails
 {
-    public PartType type;
     public bool isInMixer;
 }

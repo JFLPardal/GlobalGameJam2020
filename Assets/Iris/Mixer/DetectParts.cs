@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static LoadPrefabs;
 
 public class DetectParts : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DetectParts : MonoBehaviour
     private bool isBodyPartSet;
     private bool isAnimalPartSet;
 
+    private GameObject smoke;
 
     void Start()
     {
@@ -27,21 +29,17 @@ public class DetectParts : MonoBehaviour
             var otherTransform = other.GetComponentInChildren<Transform>();
             if (otherTransform.tag.ToLower().Equals("body_part"))
             {
-                var _bodyPart = otherTransform.GetComponent<BodyPart>();
-                if (tryAddBodyPart(_bodyPart.GetType()))
-                {
-                    if (tryJoinParts()) resetBodyParts();
-                    _bodyPart.Destroy();
-                }
+                if (tryJoinParts()) resetBodyParts();
+                smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
+                _bodyPart.Destroy();
+                Invoke("DestroySmoke", 1f);
             }
             else if (otherTransform.tag.ToLower().Equals("animal_part"))
             {
-                var _animalPart = otherTransform.GetComponent<AnimalPart>();
-                if (tryAddAnimalPart(_animalPart.GetSpecies()))
-                {
-                    if (tryJoinParts()) resetBodyParts();
-                    _animalPart.Destroy();
-                }
+                if (tryJoinParts()) resetBodyParts();
+                smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
+                _animalPart.Destroy();
+                Invoke("DestroySmoke", 1f);
             }
         }
     }
@@ -80,5 +78,10 @@ public class DetectParts : MonoBehaviour
         isAnimalPartSet = false;
         species = Species.UNKNOWN;
         bodyPartType = PartType.UNKNOWN;
+    }
+
+    private void DestroySmoke()
+    {
+        Destroy(smoke);
     }
 }

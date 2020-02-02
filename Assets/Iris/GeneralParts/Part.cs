@@ -13,12 +13,8 @@ public class Part : MonoBehaviour
         pickAndDrop = GetComponentInParent<PickAndDrop>();
         Assert.IsNotNull(pickAndDrop, "pickAndDrop not found for object");
     }
-    public virtual void DefineDetails(PartType _type)
+    public virtual void DefineDetails()
     {
-        if (details != null)
-        {
-            details.type = _type;
-        }
     }
 
     public bool GetIsInMixer()
@@ -31,16 +27,10 @@ public class Part : MonoBehaviour
         details.isInMixer = value;
     }
 
-    public PartType GetType()
-    {
-        return details.type;
-    }
-
     public bool IsPickedUp()
     {
         return pickAndDrop.IsPickedUp();
     }
-    
     public void Destroy()
     {
         Destroy(transform.parent.gameObject);
