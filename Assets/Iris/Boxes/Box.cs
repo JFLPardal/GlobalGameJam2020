@@ -8,13 +8,23 @@ public class Box : Interactable
     BoxDetails boxDetails;
     bool isEmpty;
 
+    public BoxType _type = BoxType.BODY;
+    public PartType _bodyPart = PartType.ARMS;
+    public Species _species = Species.UNKNOWN;
+
     void Start()
     {
         boxDetails = new BoxDetails();
-        boxDetails.type = BoxType.BODY;
-        boxDetails.part = PartType.ARMS;
-        boxDetails.species = Species.UNKNOWN;
-        boxDetails.boxTypeName = "Barms";
+        boxDetails.type = _type;
+        boxDetails.part = _bodyPart;
+        boxDetails.species = _species; 
+
+        string finalNamePart = _species.ToString().ToLower();
+
+        if (_bodyPart != PartType.UNKNOWN)
+            finalNamePart = _bodyPart.ToString().ToLower();
+        boxDetails.boxTypeName = _type.ToString().Substring(0, 1) + finalNamePart;
+
         isEmpty = true;
     }
     
