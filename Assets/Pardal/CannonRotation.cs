@@ -10,6 +10,8 @@ public class CannonRotation : Interactable
     private GameObject partBeingHeld;
     private Collider partTrigger;
 
+    private SoundController soundController;
+
     private void Start()
     {
         foreach(var collider in GetComponents<BoxCollider>())
@@ -19,6 +21,8 @@ public class CannonRotation : Interactable
                 partTrigger = collider;
             }
         }
+
+        soundController = GameObject.Find("StartGame").GetComponent<SoundController>();
     }
     public override void Interact(Transform outsideTransform)
     {
@@ -44,6 +48,7 @@ public class CannonRotation : Interactable
             partTrigger.enabled = false;
             partBeingHeld.transform.parent = null;           
             StartCoroutine(ReactivatePartsTrigger());
+            soundController.PlaySound(SoundEvents.SHOOT);
         }
         partBeingHeld = null;
     }

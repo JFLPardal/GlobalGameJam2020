@@ -9,6 +9,12 @@ public class JoinParts : MonoBehaviour
     [SerializeField] Vector2 finalPartOffset;
 
     private GameObject smoke;
+    private SoundController soundController;
+
+    void Start()
+    {
+        soundController = GameObject.Find("StartGame").GetComponent<SoundController>();
+    }
 
     public bool assembleParts(PartType _bodyPartType, Species _species)
     {
@@ -22,6 +28,7 @@ public class JoinParts : MonoBehaviour
             return false;
 
         CreateCombinedPart(combinedPartPrefab, _bodyPartType, _species);
+        soundController.PlaySound(SoundEvents.COMBINED);
         return true;
     }
 

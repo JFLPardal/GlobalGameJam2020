@@ -8,9 +8,16 @@ public class PickAndDrop : Interactable
     public override void Interact(Transform otherTransform)
     {
         if (isPickedUp)
+        {
             transform.parent = null;
+            GameObject.Find("StartGame").GetComponent<SoundController>().PlaySound(SoundEvents.DROP);
+        }
         else
+        {
             transform.parent = otherTransform;
+            GameObject.Find("StartGame").GetComponent<SoundController>().PlaySound(SoundEvents.PICKUP);
+        }
+
         isPickedUp = !isPickedUp;
     }
 
