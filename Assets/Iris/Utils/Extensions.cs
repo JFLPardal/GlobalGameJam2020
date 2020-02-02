@@ -61,13 +61,26 @@ public static class Extensions
         return bodyType + animalType + species;       
     }
 
+    public static string PartSpeciesStructNameMapper(PartSpeciesStruct pair)
+    {
+        var species = AnimalSpeciesMapper(pair.species);
+        var bodyType = BodyPartTypeMapper(pair.type);
+        var animalType = AnimalPartTypeMapper(pair.type);
+        Debug.Log("mapper: " + bodyType + animalType + species);
+        return bodyType + animalType + species;
+    }
+
     public static Species GetRandomSpecies()
     {
-        return (Species) UnityEngine.Random.Range(0, Enum.GetValues(typeof(Species)).Length - 1);
+        var s = (Species)UnityEngine.Random.Range(0, Enum.GetValues(typeof(Species)).Length - 1);
+        Debug.Log("random species: " + s);
+        return s;
     }
     public static PartType GetRandomPart()
     {
-        return (PartType) UnityEngine.Random.Range(0, Enum.GetValues(typeof(PartType)).Length - 1);
+        var s = (PartType) UnityEngine.Random.Range(0, Enum.GetValues(typeof(PartType)).Length - 1);
+        Debug.Log("random type: " + s);
+        return s;
     }
 
     public static bool ContainsPair(this List<PartSpeciesStruct> list, PartSpeciesStruct newPair)
@@ -82,4 +95,33 @@ public static class Extensions
         return false;
     }
 
+    public static PartSpeciesStruct GetLegs(this List<PartSpeciesStruct> list)
+    {
+        foreach(var pair in list)
+        {
+            Debug.Log(pair.type);
+            if (pair.type == PartType.LEGS)
+                return pair;
+        }
+        return null;
+    }
+
+    public static PartSpeciesStruct GetArms(this List<PartSpeciesStruct> list)
+    {
+        foreach (var pair in list)
+        {
+            if (pair.type == PartType.ARMS)
+                return pair;
+        }
+        return null;
+    }
+    public static PartSpeciesStruct GetHead(this List<PartSpeciesStruct> list)
+    {
+        foreach (var pair in list)
+        {
+            if (pair.type == PartType.HEAD)
+                return pair;
+        }
+        return null;
+    }
 }
