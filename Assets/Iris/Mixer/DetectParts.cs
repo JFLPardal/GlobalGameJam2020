@@ -13,10 +13,13 @@ public class DetectParts : MonoBehaviour
 
     private GameObject smoke;
 
+    private SoundController soundController;
+
     void Start()
     {
         isBodyPartSet = false;
         isAnimalPartSet = false;
+        soundController = GameObject.Find("StartGame").GetComponent<SoundController>();
     }
     
     protected void OnTriggerStay(Collider other)
@@ -33,6 +36,7 @@ public class DetectParts : MonoBehaviour
                     smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
                     _bodyPart.Destroy();
                     Invoke("DestroySmoke", 1f);
+                    soundController.PlaySound(SoundEvents.THROWMIXER);
                 }
             }
             else if (otherTransform.tag.ToLower().Equals("animal_part"))
@@ -44,6 +48,7 @@ public class DetectParts : MonoBehaviour
                     smoke = Instantiate(GetSmokePrefab(), otherTransform.position, new Quaternion(0, 0, 0, 0));
                     _animalPart.Destroy();
                     Invoke("DestroySmoke", 1f);
+                    soundController.PlaySound(SoundEvents.THROWMIXER);
                 }
             }
         }

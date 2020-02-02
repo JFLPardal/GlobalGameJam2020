@@ -15,12 +15,16 @@ public class ClawMovement : MonoBehaviour
 
     public bool switchDirections = false;
 
+    private SoundController soundController;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         body = transform.GetComponentInChildren<Body>();
         order = transform.GetComponentInChildren<Order>();
         speed = .5f;
+
+        soundController = GameObject.Find("StartGame").GetComponent<SoundController>();
     }
 
     void FixedUpdate()
@@ -44,6 +48,7 @@ public class ClawMovement : MonoBehaviour
         else if (IsOrderComplete(body, order) && body.HasNotDropped())
         {
             body.DropFromClaw();
+            soundController.PlaySound(SoundEvents.DROPBODY);
         }
         else
             CheckOutsideEdges();
