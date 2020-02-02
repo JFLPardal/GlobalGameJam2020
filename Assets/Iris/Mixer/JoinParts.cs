@@ -6,8 +6,7 @@ using static LoadPrefabs;
 
 public class JoinParts : MonoBehaviour
 {
-    PartType animalPartType;
-    PartType bodyPartType;
+    private GameObject smoke;
 
     public bool assembleParts(PartType _bodyPartType, Species _species)
     {
@@ -30,5 +29,12 @@ public class JoinParts : MonoBehaviour
         var combinedPart = Instantiate(prefab, new Vector3(0, 5, 0), new Quaternion(0, 0, 0, 0));
         combinedPart.AddComponent<CombinedPart>();
         combinedPart.GetComponent<CombinedPart>().DefineDetails(bodyPartType, species);
+        combinedPart.GetComponent<Renderer>().sortingOrder = 0;
+        smoke = Instantiate(GetSmokePrefab(), new Vector3(0, 5, -3), new Quaternion(0, 0, 0, 0));
+        Invoke("DestroySmoke", 1f);
+    }
+
+    private void DestroySmoke() {
+        Destroy(smoke);
     }
 }

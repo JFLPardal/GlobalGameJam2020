@@ -11,6 +11,8 @@ public static class LoadPrefabs
 
     public static GameObject claw;
 
+    public static GameObject smoke;
+
     private static string bodyPartsPath = "Assets/Iris/BodyParts/Prefabs/";
     private static string animalPartsPath = "Assets/Iris/AnimalParts/Prefabs/";
     private static string combinedPartsPath = "Assets/Iris/CombinedParts/Prefabs/";
@@ -21,6 +23,7 @@ public static class LoadPrefabs
         LoadAnimalParts();
         LoadCombinedParts();
         LoadClaw();
+        LoadSmoke();
     }
 
     public static GameObject GetCombinedPart(string fullName)
@@ -43,9 +46,19 @@ public static class LoadPrefabs
         return claw;
     }
 
+    public static GameObject GetSmokePrefab()
+    {
+        return smoke;
+    }
+
     private static void LoadClaw()
     {
         claw = AssetDatabase.LoadAssetAtPath("Assets/Iris/Claw/Prefabs/claw.prefab", typeof(GameObject)) as GameObject;
+    }
+
+    private static void LoadSmoke()
+    {
+        smoke = AssetDatabase.LoadAssetAtPath("Assets/Iris/SpecialEffects/Prefabs/smoke.prefab", typeof(GameObject)) as GameObject;
     }
 
     private static void LoadBodyParts()
