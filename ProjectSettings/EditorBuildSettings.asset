@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/GameJam2020_Level3D.unity
+    guid: d166c755075f9264aadbdc29424b5090
   m_configObjects: {}

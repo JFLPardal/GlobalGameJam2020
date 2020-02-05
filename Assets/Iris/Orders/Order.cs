@@ -33,8 +33,7 @@ public class Order : MonoBehaviour
             var newPart = new PartSpeciesStruct((PartType)i, GetRandomSpecies());
             expectedParts.Add(newPart);
         }
-        print(expectedParts.Count);
-        CreateOrderMiniBody();
+        //CreateOrderMiniBody();
     }
 
     private void CreateOrderMiniBody()
@@ -43,7 +42,7 @@ public class Order : MonoBehaviour
         GameObject legsPrefab = GetCombinedPart(PartSpeciesStructNameMapper(expectedParts.GetLegs()));
         GameObject armsPrefab = GetCombinedPart(PartSpeciesStructNameMapper(expectedParts.GetArms()));
         GameObject headPrefab = GetCombinedPart(PartSpeciesStructNameMapper(expectedParts.GetHead()));
-
+        Debug.Log(legsPrefab);
         var pos = transform.position;
 
         GameObject legs = Instantiate(legsPrefab, new Vector3(pos.x, pos.y, pos.z), new Quaternion(0,0,0,0));

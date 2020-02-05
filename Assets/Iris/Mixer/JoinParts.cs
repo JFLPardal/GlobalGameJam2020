@@ -16,6 +16,7 @@ public class JoinParts : MonoBehaviour
         string animalPart = AnimalPartTypeMapper(_bodyPartType);
         string species = AnimalSpeciesMapper(_species);
 
+        print(bodyPart + animalPart + species);
         GameObject combinedPartPrefab = GetCombinedPart(bodyPart + animalPart + species);
         print(combinedPartPrefab.name);
         if (combinedPartPrefab == null)

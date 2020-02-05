@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Extensions;
 
 public class Body : MonoBehaviour
 {
@@ -27,7 +28,6 @@ public class Body : MonoBehaviour
             if (currentParts[i].type == combinedPart.GetType())
             {
                 currentParts[i].species = combinedPart.GetSpecies();
-                print("updated bp");
                 GetComponent<UpdateBody>().UpdateBodyPart(combinedPart);
                 break;
             }
@@ -50,7 +50,6 @@ public class Body : MonoBehaviour
         {
             UpdateBodyPart(combinedPart);
             combinedPart.Destroy();
-            print("destroyed");
         }
     }
 

@@ -6,8 +6,8 @@ using static OrderCompletion;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] Vector3 initialPositionToSpawn = new Vector3(-5, 3, 8);
-    private float clawGenerationInterval = 10;
+    [SerializeField] Vector3 initialPositionToSpawn = new Vector3(10, 6, 30);
+    private float clawGenerationInterval = 30;
 
     void Start()
     {
