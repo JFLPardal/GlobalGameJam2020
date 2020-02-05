@@ -10,7 +10,6 @@ public class BodyPart : Part
 
     public PartType GetType()
     {
-        print("get body: " + _type);
         return _type;
     }
 }

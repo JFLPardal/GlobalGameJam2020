@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 2931164571797345851}
   - component: {fileID: 4498433402396715077}
   - component: {fileID: 5172135878518671840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blegs_Alegs_duck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.003, y: 0.004, z: 0.0035}
+  m_Size: {x: 0.002, y: 0.002, z: 0.0035}
   m_Center: {x: 0, y: 0, z: -0.0015}
 --- !u!1001 &564306811639290485
 PrefabInstance:
@@ -143,6 +143,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1004008950058468448}
     m_Modifications:
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.64
+      objectReference: {fileID: 0}
     - target: {fileID: 1800532848670692044, guid: 015239ea543f57946a650e16d84fb35c,
         type: 3}
       propertyPath: m_Name

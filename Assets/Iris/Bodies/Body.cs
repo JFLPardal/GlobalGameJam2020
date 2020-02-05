@@ -23,7 +23,6 @@ public class Body : MonoBehaviour
 
     public void UpdateBodyPart(CombinedPart combinedPart)
     {
-        print( BodyPartTypeMapper(combinedPart.GetType()));
         for (int i = currentParts.Count - 1; i >= 0; i--)
         {
             if (currentParts[i].type == combinedPart.GetType())

@@ -36,6 +36,7 @@ public class CannonRotation : Interactable
 
     private void ShootPart()
     {
+        Debug.Log(partBeingHeld);
         if(partBeingHeld != null)
         {
             partBeingHeld.GetComponent<Rigidbody>().velocity = CannonTip.transform.forward * shootingSpeed;

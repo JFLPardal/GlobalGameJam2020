@@ -43,7 +43,6 @@ public static class LoadPrefabs
 
     public static GameObject GetClawPrefab()
     {
-        Debug.Log("claw: " +claw);
         return claw;
     }
 

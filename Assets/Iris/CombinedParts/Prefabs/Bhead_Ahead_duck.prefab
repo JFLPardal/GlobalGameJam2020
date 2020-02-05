@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6120869951506987490}
   - component: {fileID: 7958918969992120730}
   - component: {fileID: 5458678298296688334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bhead_Ahead_duck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.004, y: 0.003, z: 0.003}
+  m_Size: {x: 0.002, y: 0.003, z: 0.003}
   m_Center: {x: 0, y: 0, z: 0.001}
 --- !u!114 &7958918969992120730
 MonoBehaviour:
@@ -124,18 +124,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1107459853522928301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4815096315750536934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09e214cff165ff4585bf796bda6c3c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6498253909514650666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,6 +131,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8871257572150484885}
     m_Modifications:
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252183192339402599, guid: 015239ea543f57946a650e16d84fb35c,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.23
+      objectReference: {fileID: 0}
     - target: {fileID: 1800532848670692044, guid: 015239ea543f57946a650e16d84fb35c,
         type: 3}
       propertyPath: m_Name
@@ -220,12 +228,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015239ea543f57946a650e16d84fb35c, type: 3}
---- !u!1 &4815096315750536934 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1800532848670692044, guid: 015239ea543f57946a650e16d84fb35c,
-    type: 3}
-  m_PrefabInstance: {fileID: 6498253909514650666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4520770000194823358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7247259218538979476, guid: 015239ea543f57946a650e16d84fb35c,

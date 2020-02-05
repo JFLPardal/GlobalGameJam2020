@@ -57,6 +57,8 @@ public class UpdateBody : MonoBehaviour
         var prefab = GetCombinedPart(fullName);
 
         var childLegs = GetBodyPart("head");
+        Debug.Log(childLegs);
+        Debug.Log(fullName + " " + prefab);
         var newLegs = Instantiate(prefab, childLegs.transform.position, childLegs.transform.rotation);
         newLegs.transform.parent = transform;
         newLegs.tag = "head";

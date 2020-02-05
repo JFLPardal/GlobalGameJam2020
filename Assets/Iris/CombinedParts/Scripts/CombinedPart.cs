@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class CombinedPart : Part
 {
+    /*[SerializeField] PartType _type;
+    [SerializeField] Species _species;
+
+    public Species GetSpecies()
+    {
+        print("get animal: " + _species);
+        return _species;
+    }
+
+    public PartType GetType()
+    {
+        print("get body: " + _type);
+        return _type;
+    }*/
+
+    
     public virtual void DefineDetails(PartType _type, Species _species)
     {
         details = new CombinedPartDetails();

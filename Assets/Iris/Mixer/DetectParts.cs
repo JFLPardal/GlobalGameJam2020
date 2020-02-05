@@ -71,6 +71,7 @@ public class DetectParts : MonoBehaviour
 
     private bool tryJoinParts()
     {
+        Debug.Log("try join");
         if (isAnimalPartSet && isBodyPartSet)
             return GetComponent<JoinParts>().assembleParts(bodyPartType, species);
 
@@ -79,6 +80,7 @@ public class DetectParts : MonoBehaviour
 
     private void resetBodyParts()
     {
+        Debug.Log("reset");
         isBodyPartSet = false;
         isAnimalPartSet = false;
         species = Species.UNKNOWN;

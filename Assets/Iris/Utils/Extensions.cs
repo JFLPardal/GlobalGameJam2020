@@ -66,6 +66,7 @@ public static class Extensions
         var species = AnimalSpeciesMapper(pair.species);
         var bodyType = BodyPartTypeMapper(pair.type);
         var animalType = AnimalPartTypeMapper(pair.type);
+        Debug.Log(bodyType + animalType + species);
         return bodyType + animalType + species;
     }
 
